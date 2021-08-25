@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Form, DatePicker, message, Input, Select, InputNumber, Switch, Button, Divider, Modal, Empty} from 'antd';
+import { Form, DatePicker, message, Input, Select, InputNumber, Switch, Button, Divider, Modal, Empty, Row, Col} from 'antd';
+import Todos from './components/Todos';
 import 'antd/dist/antd.css';
 import './index.css';
 
@@ -48,10 +49,24 @@ const App = () => {
     
   };
   return (
-    <div style={{ width: 350, margin: '100px auto' }}>
+    <div >
       {view?
-      <div>
-      <center><h2>Help us get to know you better!</h2></center>
+      
+      <div style={{textAlign:"center", width:1000, margin:"auto"}}>
+        
+        <Row>
+      <Col  flex={2}>
+      <div style={{ width: 350,margin: '100px auto' }}>
+        <Todos/>
+        
+        </div>
+      </Col>
+
+      <Col flex={3}>
+        
+   
+    <div style={{ width: 350, margin: '100px auto' }}>
+     <h2>Help us get to know you better!</h2>
       <Divider />
       <Form
     labelCol={{
@@ -98,6 +113,9 @@ const App = () => {
           <Button onClick={handleViewChange}>Save</Button>
         </Form.Item>
       </Form>
+      </div>
+      </Col>
+        </Row>
 
       <Modal title="Please Enter ID" visible={openModal} onOk={handleOk} onCancel={handleCancel}>
         <p>Employee ID is Mandatory. Please Enter your ID to proceed...</p>
@@ -105,7 +123,7 @@ const App = () => {
 
       </div>
       : 
-      <div style={{ marginTop: 16 }}>
+      <div style={{ width: 350, margin: '100px auto' }}>
         <center><h2>Here's what we know about you: </h2>
         <Divider />
         <p><b>Your Name: </b>{name? name : "Unknown"} </p>
