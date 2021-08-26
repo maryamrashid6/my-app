@@ -8,7 +8,11 @@ const initState ={
 
 const rootReducer =(state = initState, action)=>{
     if(action.type==='ADD_TODO'){
-        let count= parseInt(state.todos[state.todos.length - 1].id);
+        var count=0;
+        if(state.todos[state.todos.length - 1] != undefined){
+            count= parseInt(state.todos[state.todos.length - 1].id);
+        }
+        
         let newItem={id: count+1, body: action.body}
         console.log(state);
         return{
